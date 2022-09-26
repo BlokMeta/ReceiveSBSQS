@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+
+    .btn {
+        color: antiquewhite;
+        font-weight: bold;
+        font-family: Calibri;
+        font-size: 25px;
+    }
+
+</style>
+
+<div class="text-center">
+    <h1 class="display-6">
+        <font color="maroon"> <b>Welcome to Queue Receiver Service System</b> </font>
+    </h1><br />
+    <a class="btn btn-secondary" asp-controller="Home" asp-action="ReceiveMessage">Receive Message</a>
+
+        <h1 class="display-7 " style="text-align:justify">
+
+            <font face="tahoma" size="4" color="maroon">
+                <b> What is Azure Service Bus?</b><br />
+            </font>
+
+            <font face="tahoma" size="2" color="gray">
+                <b>
+                    Azure Service Bus is a fully managed enterprise message broker with message queues and publish-subscribe topics (in a namespace). Service Bus is used to decouple applications and services from each other, providing the following benefits:
+
+                    Load-balancing work across competing workers
+                    Safely routing and transferring data and control across service and application boundaries
+                    Coordinating transactional work that requires a high-degree of reliability.
+                </b>
+            </font>
+
+            <font face="tahoma" size="4" color="maroon">
+                <br />
+                <b>What is Amazon Simple Queue Service?</b><br />
+            </font>
+
+            <font face="tahoma" size="2" color="gray">
+                <b>
+                    Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. Amazon SQS offers common constructs such as dead-letter queues and cost allocation tags. It provides a generic web services API that you can access using any programming language that the AWS SDK supports.
+                    Amazon SQS supports both standard and FIFO queues.
+                </b> <br />
+            </font>
+
+            <font face="tahoma" size="4" color="maroon">
+                <b>Differences between Amazon SQS, Amazon MQ, and Amazon SNS</b><br />
+            </font>
+
+            <font face="tahoma" size="2" color="gray">
+                <b>
+                    Amazon SQS and Amazon SNS are queue and topic services that are highly scalable, simple to use, and don't require you to set up message brokers. We recommend these services for new applications that can benefit from nearly unlimited scalability and simple APIs.
+
+                    Amazon MQ is a managed message broker service that provides compatibility with many popular message brokers. We recommend Amazon MQ for migrating applications from existing message brokers that rely on compatibility with APIs such as JMS or protocols such as AMQP, MQTT, OpenWire, and STOMP.
+                </b>
+            </font>
+
+
+
+        </h1>
+</div>
