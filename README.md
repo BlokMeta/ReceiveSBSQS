@@ -1,6 +1,6 @@
 # ReceiveSBSQS
 
-AWS SQS and Azure Service Bus Queue Sender Service at the Same Time. MVC .NET Core.  NET6
+AWS SQS and Azure Service Bus Queue Receiver Service at the Same Time. MVC .NET Core.  NET6
 
 
 1- Create a Azure Service Bus with azure account.
