@@ -1,11 +1,14 @@
 using ReceiveMessagesSQS_SB.Services;
 using ReceiveSBSQS.Configuration;
+using SenderQueueMessageServices.NetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IReceivers, Receivers>();
+builder.Services.AddHostedService<Worker>();
+
 
 
 IConfiguration config = new ConfigurationBuilder()

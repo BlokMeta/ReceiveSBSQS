@@ -12,6 +12,7 @@ namespace ReceiveMessagesSQS_SB.Services
     {
         //AWS
 
+        static TimeSpan _maxWaitTime = new TimeSpan(0, 0, 5);
         ReceiveQueueModel model = new();
 
         public async Task<string> AwsReceiveAsync()
@@ -19,7 +20,8 @@ namespace ReceiveMessagesSQS_SB.Services
             var _sqsClient = new AmazonSQSClient(QueueSettings.awsAccessKey, QueueSettings.awsSecret, RegionEndpoint.EUWest2);
             var receiveMessageRequest = new ReceiveMessageRequest
             {
-                QueueUrl = QueueSettings.awsQueuUrl
+                QueueUrl = QueueSettings.awsQueuUrl,
+                WaitTimeSeconds = 4
             };
             //receiveMessageRequest.MaxNumberOfMessages = 10;
             //receiveMessageRequest.VisibilityTimeout = 10;
@@ -38,24 +40,24 @@ namespace ReceiveMessagesSQS_SB.Services
         {
             ServiceBusClient client = new ServiceBusClient(QueueSettings.azureConnectionString);
             var receiver = client.CreateReceiver(QueueSettings.azureQueueName);
-            var administrationClient = new ServiceBusAdministrationClient(QueueSettings.azureConnectionString);
-            var props = await administrationClient.GetQueueRuntimePropertiesAsync(QueueSettings.azureQueueName);
-            var messageCount = props.Value.ActiveMessageCount;
+            //IReadOnlyList<ServiceBusReceivedMessage> receivedMessages = await receiver.ReceiveMessagesAsync(maxMessages: _maxMessage, maxWaitTime: _maxWaitTime);
+            var message = await receiver.ReceiveMessageAsync(_maxWaitTime);
 
-            if (messageCount > 0)
+            try
             {
-                try
+                if (message != null)
                 {
-                    var message = await receiver.ReceiveMessageAsync();
                     model.AzureMessage = message.Body.ToString();
                     await receiver.CompleteMessageAsync(message);
                 }
-                finally
-                {
-                    await receiver.DisposeAsync();
-                    await client.DisposeAsync();
-                }
+
             }
+            finally
+            {
+                await receiver.DisposeAsync();
+                await client.DisposeAsync();
+            }
+
             return model.AzureMessage;
         }
 
@@ -78,6 +80,5 @@ namespace ReceiveMessagesSQS_SB.Services
             }
             return model;
         }
-
     }
 }

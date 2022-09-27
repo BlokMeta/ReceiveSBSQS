@@ -1,7 +1,4 @@
 ﻿@model ReceiveSBSQS.Models.ReceiveQueueModel
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,36 +20,30 @@
             margin: 0px -100px;
             height: 150px;
         }
-
         .bird i {
             font-size: 125px;
             transition: .3s;
             padding-right: 1000px;
             }
-
         .container {
             padding: 10px 20px;
             height: 10px;
         }
-
         .btn {
             position: center;
             width: 960px;
             margin: 0px auto;
         }
-
         .col-form-label {
             position: center;
             width: auto;
             height: auto;
             margin-left: -100px;
         }
-
     </style>
 
 </head>
 <body>
-
     <div class="bird animate__animated animate__fadeInBottomLeft">
         <i class="fas fa-crow fa-5x"></i>
     </div>
@@ -73,8 +64,6 @@
                         icon.style.transform = "scaleX(-1)"
                         let posX = 2000;
                         icon.style.position = 'absolute';
-
-
                         btnReceive.addEventListener("click", function () {
 
                             let animate = setInterval(function () {
@@ -93,23 +82,13 @@
                     <div class="row">
                         <div class="col-md-6 border border-dark mt-6">
                             <p style=" font-size:30px; text-align:center;">AWS.SQS</p>
-
-
                             <p class="display-6">@Model.AwsMessage</p>
-
-
                         </div>
                         <div class="col-md-6 border border-dark mt-6 ml-2">
                             <p style=" font-size:30px; text-align:center;">Azure Service Bus</p>
-
                             <p class="display-6">@Model.AzureMessage</p>
-
-
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <br />
