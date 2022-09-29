@@ -23,7 +23,7 @@ namespace ReceiveSBSQS.Controllers
 
         public async Task<IActionResult> ReceiveMessageAsync()
         {
-            ReceiveQueueModel model = new ReceiveQueueModel();
+            ReceiveQueueModel model;
             model = await _receivers.ReceiveMessageAsync();
             return View(model);
 

@@ -5,7 +5,7 @@ namespace SenderQueueMessageServices.NetCore
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly IConfiguration _config;
+        private readonly IConfiguration _config;//not using(using with diffrent methods)
         private readonly IReceivers _processor;
         public Worker(IConfiguration config, ILogger<Worker> logger, IReceivers processor)
         {

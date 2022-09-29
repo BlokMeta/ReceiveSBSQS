@@ -10,8 +10,6 @@ namespace ReceiveMessagesSQS_SB.Services
 {
     public class Receivers : IReceivers
     {
-        //AWS
-
         static TimeSpan _maxWaitTime = new TimeSpan(0, 0, 5);
         ReceiveQueueModel model = new();
 
